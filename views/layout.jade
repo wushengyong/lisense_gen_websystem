@@ -1,7 +1,25 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+    head
+        title = title
+        meta(charset='utf-8')
+        link(rel='stylesheet',href='/css/bootstrap.min.css')
+        link(rel='stylesheet',href='/css/mine.css')
+        script(src='/js/bootstrap.min.js')
+        script(src='/js/angular.min.js')
+    body
+        p
+            ul.nav.nav-pills
+                -if (!download)
+                    li.active
+                        a(href='#') 授权
+                -else
+                    li
+                        a(href='#') 授权
+                -if (download)
+                    li.active
+                        a(href='#') 下载
+                -else
+                    li
+                        a(href='#') 下载
+        block content

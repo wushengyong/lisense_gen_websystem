@@ -1,5 +1,74 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    div.panel.panel-primary(ng-app='auth_app',ng-controller='auth_ctrl')
+        div.panel-heading 设备授权
+        div.panel-body
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 用户列表
+                div.panel-body
+                    div.form-group
+                        select.form-control(ng-init="selected_users",ng-model="selected_users",ng-options="user for user in users_list",multiple='true')
+            div.listinfobox
+                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
+                br
+                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 待授权用户
+                div.panel-body
+                    div.form-group
+                        select.form-control(ng-options="user for user in userWait",multiple="true")
+            div.listinfobox
+                button.tipsbtn 授权
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 被授权的EFIRM
+                div.panel-body
+            div.listinfobox
+                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
+                br
+                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span EFIRM列表
+                div.panel-body
+    div.panel.panel-primary
+        div.panel-heading Eplate授权
+        div.panel-body
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 用户列表
+                div.panel-body
+            div.listinfobox
+                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
+                br
+                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 待授权用户
+                div.panel-body
+            div.listinfobox
+                button.tipsbtn 授权
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span 被授权的Eplate
+                div.panel-body
+            div.listinfobox
+                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
+                br
+                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
+            div.panel.panel-primary.listinfobox
+                div.panel-heading
+                    span Eplate列表
+                div.panel-body
+
+
+    script.
+        var app = angular.module('auth_app',[]);
+        app.controller('auth_ctrl',function ($scope){
+            $scope.users_list = ['wushengyong','macro','zhangzhao','yuanfen'];
+            $scope.selected_users = ['wushengyong','macro'];
+            $scope.userWait = [];
+        });

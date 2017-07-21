@@ -1,0 +1,10 @@
+.listinfobox
+{
+    float:left;
+    text-justify: auto;
+    min-height: 200px;
+}
+.tipsbtn
+{
+    margin : 40px 20px auto 20px
+}
