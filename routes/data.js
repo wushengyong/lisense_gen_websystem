@@ -14,5 +14,7 @@ router.get('/eplate_types',function (req, res, next){
     var eplate_types = ["eplate_96wells","eplate_16wells"];
     res.end(JSON.stringify(eplate_types));
 });
-
+router.get('/download/lisense',function (req, res, next){
+    
+});
 module.exports = router;

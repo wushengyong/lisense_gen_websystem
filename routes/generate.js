@@ -3,10 +3,7 @@ var router = express.Router();
 var _ = require('lodash');
 
 router.post('/lisense', function(req, res, next) {
-    var lisenseInfo = JSON.parse(req.body.lisensesinfo);
-    _.forEach(lisenseInfo,function (lisense){
-        console.log(lisense);
-    })
+    console.log(req.body);
     res.end("OK");
 });
 

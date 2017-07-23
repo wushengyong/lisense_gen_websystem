@@ -103,9 +103,7 @@ block content
                                 td.datacol(title="{{lisense.info}}") {{lisense.info}}
                                 td.delcol
                                     button.glyphicon.glyphicon-remove(ng-click="lisense.isRemove = true; refreshlisense();")
-                form(action="/generate/lisense",method="post")
-                    input(hidden="true",type="text",name="lisensesinfo",value="{{lisenses}}")
-                    input.btn.btn-primary.submitcontrol(type="submit",value="生成授权文件")
+                button.btn.btn-primary.submitcontrol(ng-click="submit()") 生成授权文件
 
         div.class.modal.fade#addEplate(role='dialog',aria-hidden='true')
             div.modal-dialog
@@ -208,6 +206,11 @@ block content
             }
             $scope.formateplate = function (eplate){
                 return eplate.eplate_type + ":" + eplate.barcode_min + "-" + eplate.barcode_max;
+            }
+            $scope.submit = function (){
+                $http.post("/generate/lisense", $scope.lisenses).then(function (res){
+                    alert("has generate.");
+                }).catch(function (res){})
             }
 
             $http.get("/data/users_list").then(function (res){

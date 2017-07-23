@@ -19,5 +19,10 @@ block content
                      td.col-sm-3 {{lisense.date}}
    script.
       var app = angular.module('download_app',[]);
-      app.controller('download_ctrl',function ($scope) {
+      app.controller('download_ctrl',function ($scope, $http) {
+         $scope.lisenses = [];
+
+         $http.get('data/download/lisense').then(function (res){
+            $scope.lisenses = res.data;
+         }).catch(function (res){});
       });
