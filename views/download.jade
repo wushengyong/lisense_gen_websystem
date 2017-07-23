@@ -3,7 +3,7 @@ extends layout
 block content
    div(ng-app="download_app",ng-controller="download_ctrl")
       div.panel.panel-primary
-         div.panel-heading 已生成的Lisense文件
+         div.panel-heading 宸茬敓鎴愮殑Lisense鏂囦欢
          div.panel-body.showverticalscrollbar
             table.table.table-striped
                thead
@@ -12,11 +12,11 @@ block content
                      th.col-sm-4 Info
                      th.col-sm-3 Date
                tbody
-                  tr.form-group(ng-repeat="lisense in lisenses")
+                  tr.form-group.ng-hide(ng-repeat="lisense in lisenses",ng-show="true")
                      td.col-sm-3
-                        a(href="{{lisense.href}}") {{lisense.name}}
-                     td.col-sm-4 {{lisense.info}}
-                     td.col-sm-3 {{lisense.date}}
+                        a(href="{{lisense.href}}",title="{{lisense.name}}") {{lisense.name}}
+                     td.col-sm-4(title="{{lisense.info}}") {{lisense.info}}
+                     td.col-sm-3(title="{{lisense.date}}") {{lisense.date}}
    script.
       var app = angular.module('download_app',[]);
       app.controller('download_ctrl',function ($scope, $http) {

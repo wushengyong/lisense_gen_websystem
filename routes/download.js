@@ -4,7 +4,8 @@ var _ = require('lodash');
 
 router.get('/',function (req, res, next){
     var context = {
-        title : 'download'
+        title : 'download',
+        download : true
     }
     res.render('download', context);
 });

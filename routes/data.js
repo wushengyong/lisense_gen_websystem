@@ -15,6 +15,16 @@ router.get('/eplate_types',function (req, res, next){
     res.end(JSON.stringify(eplate_types));
 });
 router.get('/download/lisense',function (req, res, next){
-    
+    var lisenses = [];
+    var lisense = {
+        href:"/lisense/test.bin",
+        name : "test.bin",
+        info : ["efirm_v1"],
+        date : new Date().toLocaleString()
+    };
+    for (var i = 0 ; i < 10; ++i){
+        lisenses.push(lisense);
+    }
+    res.end(JSON.stringify(lisenses));
 });
 module.exports = router;
