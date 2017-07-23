@@ -1,74 +1,223 @@
 extends layout
 
 block content
-    div.panel.panel-primary(ng-app='auth_app',ng-controller='auth_ctrl')
-        div.panel-heading 设备授权
-        div.panel-body
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 用户列表
+    div(ng-app='auth_app',ng-controller='auth_ctrl')
+        div.horizontallayout
+            div.panel.panel-primary
+                div.panel-heading 设备授权
                 div.panel-body
-                    div.form-group
-                        select.form-control(ng-init="selected_users",ng-model="selected_users",ng-options="user for user in users_list",multiple='true')
-            div.listinfobox
-                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
-                br
-                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 待授权用户
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 用户列表
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-model="efirm_users_list_sel",multiple='true')
+                                    option(ng-repeat="user in users_list",ng-dblclick="moveComponent('efirm_users_list_sel','efirm_users_tolink')",title="{{user}}") {{user}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click="moveComponent('efirm_users_list_sel','efirm_users_tolink')") &raquo;
+                        br
+                        button.iconbtnsize(ng-click="removeComponent('efirm_users_tolink','efirm_users_tolink_sel')") &laquo;
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 待授权用户
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="efirm_users_tolink_sel")
+                                    option(ng-repeat = "user in efirm_users_tolink",ng-dblclick="removeComponent('efirm_users_tolink','efirm_users_tolink_sel')",title="{{user}}") {{user}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click="auth(efirm_users_tolink,efirms_tolink,true,['efirm_users_tolink','efirms_tolink'])") 授权
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 被授权的EFIRM
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model='efirms_tolink_sel')
+                                    option(ng-repeat = "efirm in efirms_tolink",ng-dblclick="removeComponent('efirms_tolink','efirms_tolink_sel')",title="{{efirm}}") {{efirm}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click="moveComponent('efirms_list_sel','efirms_tolink')") &laquo;
+                        br
+                        button.iconbtnsize(ng-click="removeComponent('efirms_tolink','efirms_tolink_sel')") &raquo;
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span EFIRM列表
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-init="efirms_list_sel",ng-model="efirms_list_sel",multiple='true')
+                                    option(ng-repeat="efirm in efirms_list",ng-dblclick="moveComponent('efirms_list_sel','efirms_tolink')",title="{{efirm}}"){{efirm}}
+            div.panel.panel-primary
+                div.panel-heading Eplate授权
                 div.panel-body
-                    div.form-group
-                        select.form-control(ng-options="user for user in userWait",multiple="true")
-            div.listinfobox
-                button.tipsbtn 授权
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 被授权的EFIRM
-                div.panel-body
-            div.listinfobox
-                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
-                br
-                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span EFIRM列表
-                div.panel-body
-    div.panel.panel-primary
-        div.panel-heading Eplate授权
-        div.panel-body
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 用户列表
-                div.panel-body
-            div.listinfobox
-                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
-                br
-                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 待授权用户
-                div.panel-body
-            div.listinfobox
-                button.tipsbtn 授权
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span 被授权的Eplate
-                div.panel-body
-            div.listinfobox
-                button.tipsbtn(ng-click="userWait = selected_users") &raquo;
-                br
-                button.tipsbtn(ng-click="userWait = selected_users") &laquo;
-            div.panel.panel-primary.listinfobox
-                div.panel-heading
-                    span Eplate列表
-                div.panel-body
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 用户列表
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-model='eplate_users_list_sel',multiple='true')
+                                    option(ng-repeat="user in users_list",ng-dblclick="moveComponent('eplate_users_list_sel','eplate_users_tolink')",title="{{user}}"){{user}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click="moveComponent('eplate_users_list_sel','eplate_users_tolink')") &raquo;
+                        br
+                        button.iconbtnsize(ng-click="removeComponent('eplate_users_tolink','eplate_users_tolink_sel')") &laquo;
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 待授权用户
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="eplate_users_tolink_sel")
+                                    option(ng-repeat = "user in eplate_users_tolink",ng-dblclick="removeComponent('eplate_users_tolink','eplate_users_tolink_sel')",title="{{user}}") {{user}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click="auth(eplate_users_tolink,eplates_list_tolink,false,['eplate_users_tolink','eplates_list_tolink'])") 授权
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span 被授权的Eplate
+                        div.panel-body
+                            div.form-group.horizontallayout
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_tolink_sel")
+                                    option(ng-repeat="eplate in eplates_list_tolink",ng-dblclick='removeComponent("eplates_list_tolink","eplates_list_tolink_sel")',title="{{eplate}}") {{eplate}}
+                    div.btngroup
+                        button.iconbtnsize(ng-click='moveComponent("eplates_list_sel","eplates_list_tolink")') &laquo;
+                        br
+                        button.iconbtnsize(ng-click='removeComponent("eplates_list_tolink","eplates_list_tolink_sel")') &raquo;
+                    div.panel.panel-primary.horizontallayout
+                        div.panel-heading
+                            span Eplate列表
+                        div.panel-body
+                            div.form-group.horizontallayout.multiselectnormalsize
+                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_sel")
+                                    option(ng-repeat="eplate in eplates_list",ng-dblclick='moveComponent("eplates_list_sel","eplates_list_tolink")',title="{{formateplate(eplate)}}") {{formateplate(eplate)}}
+                                button.glyphicon.glyphicon-plus(data-toggle="modal",data-target="#addEplate")
 
+        div.horizontallayout
+            div.panel.panel-primary.authpadboard
+                div.panel-heading 授权信息
+                div.panel-body.authtable.showverticalscrollbar
+                    table.table.table-striped
+                        thead
+                            tr.form-group
+                                th.usercol 用户
+                                th.datacol 设备/Eplate
+                                th.delcol
+                        tbody
+                            tr.form-group(ng-repeat="lisense in lisenses")
+                                td.usercol(title="{{lisense.users}}") {{lisense.users}}
+                                td.datacol(title="{{lisense.info}}") {{lisense.info}}
+                                td.delcol
+                                    button.glyphicon.glyphicon-remove(ng-click="lisense.isRemove = true; refreshlisense();")
+                form(action="/generate/lisense",method="post")
+                    input(hidden="true",type="text",name="lisensesinfo",value="{{lisenses}}")
+                    input.btn.btn-primary.submitcontrol(type="submit",value="生成授权文件")
 
+        div.class.modal.fade#addEplate(role='dialog',aria-hidden='true')
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button",data-dismiss="modal",aria-hidden="true")
+                        h4.modal-title#addEplateLabel 增加Eplate
+                    div.modal-body
+                        div.form-horizontal
+                            div.form-group
+                                label.col-sm-3.control-label Barcode Min:
+                                div.col-sm-7
+                                    input(type="text",ng-model="addeplate_barcode_min")
+                            div.form-group
+                                label.col-sm-3.control-label Barcode Max:
+                                div.col-sm-7
+                                    input(type="text",ng-model="addeplate_barcode_max")
+                            div.form-group
+                                label.col-sm-3.control-label Eplate Type:
+                                div.col-sm-7
+                                    select.form-control(ng-model="addeplate_eplate_type",ng-options="type for type in eplate_types")
+
+                    div.modal-footer
+                        button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+                        button.btn.btn-primary(type="button",ng-click="addEplate();") 增加
     script.
         var app = angular.module('auth_app',[]);
-        app.controller('auth_ctrl',function ($scope){
-            $scope.users_list = ['wushengyong','macro','zhangzhao','yuanfen'];
-            $scope.selected_users = ['wushengyong','macro'];
-            $scope.userWait = [];
+        app.controller('auth_ctrl',function ($scope, $http){
+            $scope.users_list = [];
+            $scope.lisenses = [];
+            $scope.efirm_users_list_sel = [];
+            $scope.efirm_users_tolink = [];
+            $scope.efirm_users_tolink_sel = [];
+            $scope.efirms_list = [];
+            $scope.efirms_list_sel = [];
+            $scope.efirms_tolink = [];
+            $scope.efirms_tolink_sel = [];
+            $scope.eplate_users_list_sel = [];
+            $scope.eplate_users_tolink = [];
+            $scope.eplate_users_tolink_sel = [];
+            $scope.eplates_list = [];
+            $scope.eplates_list_sel = [];
+            $scope.eplates_list_tolink = [];
+            $scope.eplates_list_tolink_sel = [];
+
+
+            $scope.eplate_types = [];
+            $scope.addeplate_eplate_type = $scope.eplate_types[0];
+            $scope.addeplate_barcode_min = "";
+            $scope.addeplate_barcode_max = "";
+
+            $scope.moveComponent = function (from,to){
+                $scope[to] = _.union($scope[to],$scope[from]);
+                $scope[from] = [];
+            }
+            $scope.removeComponent = function (source, toremove){
+                $scope[source] = _.xor($scope[source],$scope[toremove]);
+                $scope[toremove] = [];
+            }
+            $scope.auth = function (users, info, isDevice, clearItems){
+                if (_.isEmpty(users) || _.isEmpty(info)){
+                    alert(isDevice ? "users or efirms is empty." : "users or eplates is empty.");
+                    return;
+                }
+                var lisense = {
+                    users : users,
+                    info : info,
+                    isDevice : isDevice,
+                    isRemove : false
+                };
+                $scope.lisenses.push(lisense);
+                /*_.forEach(clearItems, function (item){
+                    $scope[item] = [];
+                })*/
+            }
+            $scope.refreshlisense = function (){
+                $scope.lisenses = _.filter($scope.lisenses,function (lisense){ return !lisense.isRemove;});
+            }
+            $scope.addEplate = function (){
+                if (_.isEmpty(_.trim($scope.addeplate_barcode_max)) ||
+                _.isEmpty(_.trim($scope.addeplate_barcode_min))){
+                    alert("Barcode Min/Max is empty.");
+                    return;
+                }
+                if (_.find($scope.eplates_list,function (eplate){
+                            return eplate.barcode_min == $scope.addeplate_barcode_min &&
+                                    eplate.barcode_max == $scope.addeplate_barcode_max &&
+                                    eplate.eplate_type == $scope.addeplate_eplate_type;
+
+                        })){
+                    alert("eplate exists.");
+                    return;
+                }
+                var eplate = {
+                    barcode_min : $scope.addeplate_barcode_min,
+                    barcode_max : $scope.addeplate_barcode_max,
+                    eplate_type : $scope.addeplate_eplate_type
+                };
+                $scope.eplates_list.push(eplate);
+                $('#addEplate').modal('hide');
+            }
+            $scope.formateplate = function (eplate){
+                return eplate.eplate_type + ":" + eplate.barcode_min + "-" + eplate.barcode_max;
+            }
+
+            $http.get("/data/users_list").then(function (res){
+                $scope.users_list = res.data;
+            }).catch(function (res){});
+            $http.get("/data/efirms_list").then(function (res){
+                $scope.efirms_list = res.data;
+            }).catch(function (res){});
+            $http.get("/data/eplate_types").then(function (res){
+                $scope.eplate_types = res.data;
+            }).catch(function (res){});
         });

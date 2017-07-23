@@ -1,10 +1,71 @@
-.listinfobox
+.horizontallayout
 {
     float:left;
     text-justify: auto;
-    min-height: 200px;
 }
-.tipsbtn
+.multiselectnormalsize
 {
-    margin : 40px 20px auto 20px
+    width: 150px;
+    height: 200px;
+    min-height: 200px;
+    font-family: 'Glyphicons Halflings';
+}
+.showhorizontalscrollbar
+{
+    overflow-x: auto;
+}
+.showverticalscrollbar
+{
+    overflow-y : auto;
+}
+.btngroup
+{
+    margin : 100px auto auto auto;
+    float : left;
+}
+.iconbtnsize
+{
+    margin : 10px 10px 10px 10px;
+    min-height: 30px;
+    max-height: 30px;
+    height : 30px;
+}
+
+.authpadboard
+{
+    margin : 0px 0px 0px 20px;
+    width : 800px;
+    height : 780px;
+}
+.authtable
+{
+    width : 800px;
+    height : 680px;
+}
+.usercol
+{
+    width : 200px;
+    max-width : 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+
+}
+.datacol
+{
+    width : 500px;
+    max-width : 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+.delcol
+{
+    max-width : 40px;
+}
+.submitcontrol
+{
+    margin : auto auto auto 650px
 }

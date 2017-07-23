@@ -1,0 +1,23 @@
+extends layout
+
+block content
+   div(ng-app="download_app",ng-controller="download_ctrl")
+      div.panel.panel-primary
+         div.panel-heading 已生成的Lisense文件
+         div.panel-body.showverticalscrollbar
+            table.table.table-striped
+               thead
+                  tr.form-group
+                     th.col-sm-3 Name
+                     th.col-sm-4 Info
+                     th.col-sm-3 Date
+               tbody
+                  tr.form-group(ng-repeat="lisense in lisenses")
+                     td.col-sm-3
+                        a(href="{{lisense.href}}") {{lisense.name}}
+                     td.col-sm-4 {{lisense.info}}
+                     td.col-sm-3 {{lisense.date}}
+   script.
+      var app = angular.module('download_app',[]);
+      app.controller('download_ctrl',function ($scope) {
+      });
