@@ -65,7 +65,21 @@
 {
     max-width : 40px;
 }
+.lisensenamelabelcontrol
+{
+    margin : auto auto auto 20px;
+    max-width: 150px;
+    width: 150px;
+}
+.lisensenamecontrol
+{
+    margin : auto auto auto 20px;
+    max-width: 400px;
+    width: 400px;
+}
 .submitcontrol
 {
-    margin : auto auto auto 650px
+    margin : auto auto auto 20px;
+    max-width: 120px;
+    width: 120px;
 }

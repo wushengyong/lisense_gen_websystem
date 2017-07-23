@@ -103,7 +103,10 @@ block content
                                 td.datacol(title="{{lisense.info}}") {{lisense.info}}
                                 td.delcol
                                     button.glyphicon.glyphicon-remove(ng-click="lisense.isRemove = true; refreshlisense();")
-                button.btn.btn-primary.submitcontrol(ng-click="submit()") 生成授权文件
+                div
+                    label.form-control.control-label.horizontallayout.lisensenamelabelcontrol Lisense Name:
+                    input.lisensenamecontrol.form-control.horizontallayout(type="text",ng-model="lisensename")
+                    button.btn.btn-primary.submitcontrol(ng-click="submit()") 生成授权文件
 
         div.class.modal.fade#addEplate(role='dialog',aria-hidden='true')
             div.modal-dialog
@@ -129,6 +132,7 @@ block content
                     div.modal-footer
                         button.btn.btn-default(type="button",data-dismiss="modal") 关闭
                         button.btn.btn-primary(type="button",ng-click="addEplate();") 增加
+
     script.
         var app = angular.module('auth_app',[]);
         app.controller('auth_ctrl',function ($scope, $http){
@@ -149,7 +153,7 @@ block content
             $scope.eplates_list_tolink = [];
             $scope.eplates_list_tolink_sel = [];
 
-            $scope.hasload = true;
+            $scope.lisensename = "EFIRM Lisense " + uuid();
 
             $scope.eplate_types = [];
             $scope.addeplate_barcode_min = "";
@@ -209,7 +213,17 @@ block content
                 return eplate.eplate_type + ":" + eplate.barcode_min + "-" + eplate.barcode_max;
             }
             $scope.submit = function (){
-                $http.post("/generate/lisense", $scope.lisenses).then(function (res){
+                if (_.isEmpty($scope.lisenses)){
+                    alert("lisenses is empty.");
+                    return;
+                }
+                var lisense = {
+                    lisenses : $scope.lisenses,
+                    name : $scope.lisensename,
+                    date : new Date()
+                }
+                $http.post("/generate/lisense", lisense).then(function (res){
+                    $scope.lisensename = "EFIRM Lisense " + uuid();
                     alert("has generate.");
                 }).catch(function (res){})
             }
@@ -228,4 +242,15 @@ block content
             // 含有ng-repeat的元素用以下这样方式无法获取
             //console.log($('.showafterload'));
             //$('.showafterload').css("visibility","visible");
+
         });
+        function uuid()
+        {
+            var len=32;//32长度
+            var radix=16;//16进制
+            var chars='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+            var uuid=[],i;
+            radix=radix||chars.length;if(len){for(i=0;i<len;i++)uuid[i]=chars[0|Math.random()*radix];}else{var r;uuid[8]=uuid[13]=uuid[18]=uuid[23]='-';uuid[14]='4';
+            for(i=0;i<36;i++){if(!uuid[i]){r=0|Math.random()*16;uuid[i]=chars[(i==19)?(r&0x3)|0x8:r];}}}
+            return uuid.join('');
+        }
