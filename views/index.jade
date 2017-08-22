@@ -11,7 +11,7 @@ block content
                             span 用户列表
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-model="efirm_users_list_sel",multiple='true')
+                                select.multiselectnormalsize.showhorizontalscrollbar(ng-model="efirm_users_list_sel",multiple='true')
                                     option.ng-hide(ng-repeat="user in users_list",ng-dblclick="moveComponent('efirm_users_list_sel','efirm_users_tolink')",title="{{user}}",ng-show="true") {{user}}
                     div.btngroup
                         button.iconbtnsize(ng-click="moveComponent('efirm_users_list_sel','efirm_users_tolink')") &raquo;
@@ -22,7 +22,7 @@ block content
                             span 待授权用户
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="efirm_users_tolink_sel")
+                                select.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="efirm_users_tolink_sel")
                                     option.ng-hide(ng-repeat = "user in efirm_users_tolink",ng-dblclick="removeComponent('efirm_users_tolink','efirm_users_tolink_sel')",title="{{user}}",ng-show="true") {{user}}
                     div.btngroup
                         button.iconbtnsize(ng-click="auth(efirm_users_tolink,efirms_tolink,true,['efirm_users_tolink','efirms_tolink'])") 授权
@@ -31,7 +31,7 @@ block content
                             span 被授权的EFIRM
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model='efirms_tolink_sel')
+                                select.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model='efirms_tolink_sel')
                                     option.ng-hide(ng-repeat = "efirm in efirms_tolink",ng-dblclick="removeComponent('efirms_tolink','efirms_tolink_sel')",title="{{efirm}}",ng-show="true") {{efirm}}
                     div.btngroup
                         button.iconbtnsize(ng-click="moveComponent('efirms_list_sel','efirms_tolink')") &laquo;
@@ -42,7 +42,7 @@ block content
                             span EFIRM列表
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-init="efirms_list_sel",ng-model="efirms_list_sel",multiple='true')
+                                select.multiselectnormalsize.showhorizontalscrollbar(ng-init="efirms_list_sel",ng-model="efirms_list_sel",multiple='true')
                                     option.ng-hide(ng-repeat="efirm in efirms_list",ng-dblclick="moveComponent('efirms_list_sel','efirms_tolink')",title="{{efirm}}",ng-show="true"){{efirm}}
             div.panel.panel-primary
                 div.panel-heading Eplate授权
@@ -52,7 +52,7 @@ block content
                             span 用户列表
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(ng-model='eplate_users_list_sel',multiple='true')
+                                select.multiselectnormalsize.showhorizontalscrollbar(ng-model='eplate_users_list_sel',multiple='true')
                                     option.ng-hide(ng-repeat="user in users_list",ng-dblclick="moveComponent('eplate_users_list_sel','eplate_users_tolink')",title="{{user}}",ng-show="true"){{user}}
                     div.btngroup
                         button.iconbtnsize(ng-click="moveComponent('eplate_users_list_sel','eplate_users_tolink')") &raquo;
@@ -63,7 +63,7 @@ block content
                             span 待授权用户
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="eplate_users_tolink_sel")
+                                select.multiselectnormalsize.showhorizontalscrollbar(multiple="true",ng-model="eplate_users_tolink_sel")
                                     option.ng-hide(ng-repeat = "user in eplate_users_tolink",ng-dblclick="removeComponent('eplate_users_tolink','eplate_users_tolink_sel')",title="{{user}}",ng-show="true") {{user}}
                     div.btngroup
                         button.iconbtnsize(ng-click="auth(eplate_users_tolink,eplates_list_tolink,false,['eplate_users_tolink','eplates_list_tolink'])") 授权
@@ -72,7 +72,7 @@ block content
                             span 被授权的Eplate
                         div.panel-body
                             div.form-group.horizontallayout
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_tolink_sel")
+                                select.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_tolink_sel")
                                     option.ng-hide(ng-repeat="eplate in eplates_list_tolink",ng-dblclick='removeComponent("eplates_list_tolink","eplates_list_tolink_sel")',title="{{eplate}}",ng-show="true") {{eplate}}
                     div.btngroup
                         button.iconbtnsize(ng-click='moveComponent("eplates_list_sel","eplates_list_tolink")') &laquo;
@@ -83,7 +83,7 @@ block content
                             span Eplate列表
                         div.panel-body
                             div.form-group.horizontallayout.multiselectnormalsize
-                                select.form-control.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_sel")
+                                select.multiselectnormalsize.showhorizontalscrollbar(multiple='true',ng-model="eplates_list_sel")
                                     option.ng-hide(ng-repeat="eplate in eplates_list",ng-dblclick='moveComponent("eplates_list_sel","eplates_list_tolink")',title="{{formateplate(eplate)}}",ng-show="true") {{formateplate(eplate)}}
                                 button.glyphicon.glyphicon-plus(data-toggle="modal",data-target="#addEplate")
 
@@ -127,7 +127,7 @@ block content
                             div.form-group
                                 label.col-sm-3.control-label Eplate Type:
                                 div.col-sm-7
-                                    select.form-control(ng-model="addeplate_eplate_type",ng-options="type for type in eplate_types")
+                                    select(ng-model="addeplate_eplate_type",ng-options="type for type in eplate_types")
 
                     div.modal-footer
                         button.btn.btn-default(type="button",data-dismiss="modal") 关闭
