@@ -2,8 +2,9 @@
   <configuration default="false" name="bin\www" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="C:/Program Files/nodejs/node" path-to-js-file="bin/www" working-dir="$PROJECT_DIR$">
     <envs>
       <env name="DEBUG" value="lisense_gen_websystem:*" />
+      <env name="" value="" />
     </envs>
-    <browser url="http://localhost:3000/" />
+    <browser name="16bf23d4-93e0-4ffc-bfd6-cb13575177b0" with-js-debugger="true" url="http://localhost:3000/" />
     <method />
   </configuration>
 </component>

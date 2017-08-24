@@ -10,12 +10,15 @@ block content
                   tr.form-group
                      th.col-sm-3 Name
                      th.col-sm-4 Info
+                     th.col-sm-4 Json
                      th.col-sm-3 Date
                tbody
                   tr.form-group.ng-hide(ng-repeat="lisense in lisenses",ng-show="true")
                      td.col-sm-3
-                        a(href="{{lisense.href}}",title="{{lisense.name}}") {{lisense.name}}
+                        a(href="{{lisense.exe_href}}",title="{{lisense.name}}") {{lisense.name}}
                      td.col-sm-4(title="{{lisense.info}}") {{lisense.info}}
+                     td.col-sm-4
+                        a(href="{{lisense.json_href}}",title="{{lisense.name}}.json") {{lisense.name}}.json
                      td.col-sm-3(title="{{lisense.date}}") {{lisense.date}}
    script.
       var app = angular.module('download_app',[]);

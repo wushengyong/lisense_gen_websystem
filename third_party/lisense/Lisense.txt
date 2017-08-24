@@ -1,0 +1,57 @@
+	License
+
+
+SOFTWARE USE PROTOCOL
+
+This legal agreement is between the user(natural person,legal person or social
+group) and {#MyAppPublisher} about {#MyAppName} software products(referred to as "SOFTWARE" below).Once
+installed,copied or otherwise used in this software product,which means that
+the terms of this agreement agreed to accept the constraints.If the user DOES
+NOT agree to the terms of the aggreement,please DO NOT USE this software
+product.
+
+
+SOFTWARE PROTECTION CLAUSES
+
+A. SOFTWARE copyright related rights and other rights or interests of
+intellectual property rights(including but not limited to,or in the future has
+been made availabe to the copyright,patent,trademark,trade secret,etc.) all
+belong to {#MyAppPublisher}.SOFTWARE PRODUCT is protected by copyright law and
+international copyright treaties and other intellectual property laws and
+treaties in the People's Republic of China.The user JUST CAN use the software
+without exclusive right.
+
+B. Users are not allowed to delete any copyright information about SOFTWARE or reverse engineering software,such as disassembly,decompile,etc.
+
+C. SOFTWARE is provided and {#MyAppPublisher} cannot ensure it can meet all
+the needs of users.{#MyAppPublisher} DOES NOT promise any thing in User
+Manual,help files and anynother documents.{#MyAppPublisher} RESERVES the
+rights to update the software, modify functions,
+content,structure,interface,operation mode, etc.
+
+D. In order to serve Users well,we may collect or spread some
+informations.{#MyAppPublisher} PROMISE that we don't provide this kinds of
+information to any social group withour authorization.
+
+E.  {#MyAppPublisher} DOES NOT take the responsibility of any
+special,unexpected,undirect loss when using SOFTWARE within the limits
+permitted by applicable law.
+
+F. The information content of the {#MyAppPublisher} definition including: text, software, voice; the company to provide users with business information, all content protected by copyright, trademarks, and other intellectual property rights and ownership law. Therefore, the user can only use the content under the authorization of the company, and can not copy, modify, edit the content, or create content related derivatives.
+
+F. Any terms of this agreement should be kept.Or {#MyAppPublisher} shall have
+the right to terminate this Agreement immediately and to retain the
+responsibility of.
+
+
+
+{#MyAppPublisher} company has the right to interpret and amend the terms and
+conditions. If the user has any objection to the interpretation or
+modification of {#MyAppPublisher} company, it shall immediately stop using the
+software product. The user's continued use of the software product will be
+deemed to be an acceptance of {#MyAppPublisher}'s interpretation or
+modification.
+
+
+In the event of any dispute arising out of this agreement, the parties agree that the jurisdiction of the court in which the company is located shall be governed by the law of the place where the {#MyAppPublisher} is located in .
+

@@ -5,7 +5,8 @@ var conv = require('iconv-lite');
 /* GET home page. */
 router.get(['/','/index'], function(req, res, next) {
   var context = {
-    title : "Lisense Generator"
+    title : "Lisense Generator",
+    compileDebug : true
   }
   res.render('index', context);
 });

@@ -43,7 +43,7 @@ block content
                         div.panel-body
                             div.form-group.horizontallayout
                                 select.multiselectnormalsize.showhorizontalscrollbar(ng-init="efirms_list_sel",ng-model="efirms_list_sel",multiple='true')
-                                    option.ng-hide(ng-repeat="efirm in efirms_list",ng-dblclick="moveComponent('efirms_list_sel','efirms_tolink')",title="{{efirm}}",ng-show="true"){{efirm}}
+                                    option.ng-hide(ng-repeat="efirm in efirms_list",ng-dblclick="moveComponent('efirms_list_sel','efirms_tolink')",title="{{efirm}}",ng-show="true") {{efirm}}
             div.panel.panel-primary
                 div.panel-heading Eplate授权
                 div.panel-body
@@ -53,7 +53,7 @@ block content
                         div.panel-body
                             div.form-group.horizontallayout
                                 select.multiselectnormalsize.showhorizontalscrollbar(ng-model='eplate_users_list_sel',multiple='true')
-                                    option.ng-hide(ng-repeat="user in users_list",ng-dblclick="moveComponent('eplate_users_list_sel','eplate_users_tolink')",title="{{user}}",ng-show="true"){{user}}
+                                    option.ng-hide(ng-repeat="user in users_list",ng-dblclick="moveComponent('eplate_users_list_sel','eplate_users_tolink')",title="{{user}}",ng-show="true") {{user}}
                     div.btngroup
                         button.iconbtnsize(ng-click="moveComponent('eplate_users_list_sel','eplate_users_tolink')") &raquo;
                         br
@@ -223,9 +223,19 @@ block content
                     date : new Date()
                 }
                 $http.post("/generate/lisense", lisense).then(function (res){
-                    $scope.lisensename = "EFIRM Lisense " + uuid();
-                    alert("has generate.");
-                }).catch(function (res){})
+                    if (res.data.msg == "OK"){
+                        $scope.lisensename = "EFIRM Lisense " + uuid();
+                        alert("has generate.");
+                    }
+                    else {
+                        if (res.data.msg && res.data.msg.errmsg){
+                            alert(res.data.msg.name + '\n' + res.data.msg.errmsg);
+                        } else {
+                            alert(res.data.msg);
+                        }
+                    }
+
+                }).catch(function (err){})
             }
 
             $http.get("/data/users_list").then(function (res){
